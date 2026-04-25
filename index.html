@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Tracker Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Work Tracker Dashboard</h1>
+        <p>Track research, projects, startup, curriculum, gym, and club work in one place.</p>
+      </div>
+      <button id="clearDoneBtn" class="btn danger">Clear Completed</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Add Work Item</h2>
+        <form id="taskForm" class="form-grid">
+          <label>
+            Title
+            <input id="title" required maxlength="100" placeholder="e.g., Read 2 papers on LLM safety" />
+          </label>
+
+          <label>
+            Area
+            <select id="area" required>
+              <option value="Research">Research</option>
+              <option value="Projects">Projects</option>
+              <option value="Startup">Startup</option>
+              <option value="College Curriculum">College Curriculum</option>
+              <option value="Gym">Gym</option>
+              <option value="Club Work">Club Work</option>
+            </select>
+          </label>
+
+          <label>
+            Priority
+            <select id="priority" required>
+              <option value="High">High</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+
+          <label>
+            Due Date
+            <input id="dueDate" type="date" />
+          </label>
+
+          <label class="full">
+            Notes
+            <textarea id="notes" rows="3" maxlength="300" placeholder="Optional details"></textarea>
+          </label>
+
+          <button class="btn primary" type="submit">Add Item</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Progress Overview</h2>
+        <div id="stats" class="stats"></div>
+      </section>
+
+      <section class="panel full-width">
+        <div class="section-header">
+          <h2>All Items</h2>
+          <select id="filterArea">
+            <option value="All">All Areas</option>
+            <option value="Research">Research</option>
+            <option value="Projects">Projects</option>
+            <option value="Startup">Startup</option>
+            <option value="College Curriculum">College Curriculum</option>
+            <option value="Gym">Gym</option>
+            <option value="Club Work">Club Work</option>
+          </select>
+        </div>
+        <div id="taskList" class="task-list"></div>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <article class="task-card">
+        <div class="task-head">
+          <h3 class="task-title"></h3>
+          <span class="badge area"></span>
+        </div>
+        <p class="task-notes"></p>
+        <div class="meta-row">
+          <span class="badge priority"></span>
+          <span class="due"></span>
+        </div>
+        <div class="task-actions">
+          <button class="btn small toggle">Mark Done</button>
+          <button class="btn small ghost delete">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
